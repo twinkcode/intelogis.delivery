@@ -1,0 +1,24 @@
+{
+  "name": "twinkcode/intelogis.delivery",
+  "description": "Module for calculating delivery cost for different shipping services",
+  "type": "library",
+  "authors": [
+    {
+      "name": "twinkcode",
+      "email": "twinkcode@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0|^8.0",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "DeliveryModule\\": "src/",
+      "Database\\": "database/"
+    }
+  }
+}
