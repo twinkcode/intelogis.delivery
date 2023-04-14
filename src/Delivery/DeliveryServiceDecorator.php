@@ -26,7 +26,6 @@ class DeliveryServiceDecorator implements DeliveryServiceInterface
      */
     public function validateData(string $sourceKladr, string $targetKladr, float $weight): bool
     {
-        //
     }
 
     /**
@@ -34,6 +33,5 @@ class DeliveryServiceDecorator implements DeliveryServiceInterface
      */
     public function checkKladr(string $kladr): bool
     {
-        //
     }
 }

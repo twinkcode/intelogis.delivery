@@ -2,6 +2,8 @@
 
 namespace Database;
 
+use DateTime;
+use Exception;
 use PDO;
 
 class SeedShipmentsTable
@@ -16,11 +18,11 @@ class SeedShipmentsTable
     /**
      * Заполняем таблицу отправлений случайными данными
      *
-     * @param $count int количество отправлений. По умолчанию 5 (можно задать cli-параметром: "-c=N")
+     * @param $count int количество отправлений. По умолчанию 15 (можно задать cli-параметром: "-c=N")
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
-    public function seed($count = 5)
+    public function seed(int $count = 15)
     {
         $opts = getopt('c:');
         if ($opts) $count = $opts['c'] && is_numeric($opts['c']) ? (int)$opts['c'] : $count;
@@ -36,10 +38,10 @@ class SeedShipmentsTable
                 $targetKladr = generateRandomString();
                 $weight = rand_float(1, 29);
 
-                $dateFrom = new \DateTime();
+                $dateFrom = new DateTime();
                 $dateFromSubDays = mt_rand(1, 10);
                 $dateFrom->modify("-$dateFromSubDays day");
-                $dateTo = new \DateTime();
+                $dateTo = new DateTime();
                 $dateToSubDays = mt_rand(1, 10);
                 $dateTo->modify("+$dateToSubDays day");
                 $date = randomDate($dateFrom->format("Y-m-d H:i:s"), $dateTo->format("Y-m-d H:i:s"));
@@ -48,7 +50,7 @@ class SeedShipmentsTable
                 $query->execute([$sourceKladr, $targetKladr, $weight, $date]);
             }
 
-        } else throw new \Exception('table shipments not exist');
+        } else throw new Exception('table shipments not exist');
     }
 
 }

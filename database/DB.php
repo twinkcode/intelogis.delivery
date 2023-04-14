@@ -25,7 +25,7 @@ class DB
         return self::$instance;
     }
 
-    public function getPdo()
+    public function getPdo(): PDO
     {
         return $this->pdo;
     }

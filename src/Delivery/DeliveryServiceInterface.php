@@ -12,8 +12,8 @@ interface DeliveryServiceInterface
      * @param string $sourceKladr КЛАДР откуда везем
      * @param string $targetKladr КЛАДР куда везем
      * @param float $weight Вес отправления в кг
-     *
      * @return array Результат расчета стоимости и сроков доставки в виде массива с ключами "price", "date" и "error"
+     * @throws DeliveryException
      */
     public function calculatePrice(string $sourceKladr, string $targetKladr, float $weight): array;
 

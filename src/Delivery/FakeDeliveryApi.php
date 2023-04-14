@@ -35,18 +35,20 @@ class FakeDeliveryApi
 
         require_once __DIR__ . '/../helpers.php';
 
+        $error = mt_rand(1, 100) > 85 ? generateRandomString(mt_rand(3, 5)) : null;
+
         switch ($this->baseUrl) {
             case '/fast':
                 return [
                     'price' => rand_float(1, 1500),
                     'period' => mt_rand(1, 15),
-                    'error' => ''
+                    'error' => $error
                 ];
             case '/slow':
                 return [
                     'coefficient' => rand_float(1, 30),
                     'date' => $deliveryDate,
-                    'error' => ''
+                    'error' => $error
                 ];
             default :
                 throw new DeliveryException('Не указан путь к api');

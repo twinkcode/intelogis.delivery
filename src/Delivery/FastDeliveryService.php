@@ -2,6 +2,8 @@
 
 namespace DeliveryModule\Delivery;
 
+use DateTime;
+
 class FastDeliveryService extends AbstractDeliveryService
 {
     public function __construct()
@@ -17,7 +19,7 @@ class FastDeliveryService extends AbstractDeliveryService
         $period = (int)$result['period'];
         $date_deadline = date("Y-m-d")." 18:00";
         $date_now    = date("Y-m-d H:i");
-        $date = new \DateTime($date_now);
+        $date = new DateTime($date_now);
         if ($date_now > $date_deadline) $period += 1;
         $date->modify("+$period day");
 

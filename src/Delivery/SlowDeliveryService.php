@@ -2,6 +2,8 @@
 
 namespace DeliveryModule\Delivery;
 
+use DateTime;
+
 class SlowDeliveryService extends AbstractDeliveryService
 {
 
@@ -21,7 +23,7 @@ class SlowDeliveryService extends AbstractDeliveryService
         $price = self::BASE_COST * $result['coefficient'];
         return [
             'price' => $price,
-            'date' => (new \DateTime($result['date']))->format("Y-m-d"),
+            'date' => (new DateTime($result['date']))->format("Y-m-d"),
             'error' => $result['error']
         ];
     }
