@@ -12,7 +12,11 @@ $fast_delivery = new DeliveryServiceDecorator(new FastDeliveryService());
 $slow_delivery = new DeliveryServiceDecorator(new SlowDeliveryService());
 
 $pdo = DB::getInstance()->getPdo();
-$shipments = $pdo->query('SELECT sourceKladr, targetKladr, weight FROM shipments');
+try {
+    $shipments = $pdo->query('SELECT sourceKladr, targetKladr, weight FROM shipments');
+} catch (\PDOException $e) {
+    echo "Run migrations and seeders before start app..."; die();
+}
 $shipments = $shipments->fetchAll($pdo::FETCH_ASSOC);
 
 
